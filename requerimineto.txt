@@ -1,0 +1,123 @@
+Requerimiento - Book Reviews
+
+Desarrollar codigo y que todo funcione en un contenedor docker, incluida la base de datos
+
+Front End
+Se requiere construir un SPA que permita desplegar información sobre libros
+u�lizando como parámetro de búsqueda el nombre del libro. La SPA debe guardar
+una review del libro seleccionado, su calificación en una escala de 1 a 5 y recuperar
+dicha información en una sección llamada “mi biblioteca”.
+
+Flujo de la SPA.
+Al ingresar a la SPA la primera pantalla que se debe desplegar es un buscador de
+libros centrado en la pantalla con el placeholder “Escribe el nombre de un Libro
+para con�nuar”.
+Además de desplegar hasta las úl�mas 5 búsquedas anteriores que realizo el
+usuario. (Solo el texto de la búsqueda)
+Al presionar el botón buscar, la SPA debe desplegar los resultados de la búsqueda
+(máximo 10 resultados), si es que existen (Título y Portada). Si no se encuentra
+ningún resultado, la SPA debe desplegar el mensaje “no encontramos libros con el
+�tulo ingresado”.
+Si exis�eran resultados de búsqueda, la SPA debe permi�r seleccionar uno de los
+resultados y desplegar una segunda pantalla o módulo donde se muestre el detalle
+del libro
+- Titulo
+- Autor
+- año de publicación
+- Portada
+Ademas del detalle, se debe desplegar:
+- un campo de texto grande para ingresar un pequeño review del libros que no
+sea mas largo que 500 caracteres.
+- un control o componente que permita ingresar una calificación al libro, (la
+calificación debe ser de 1 a 5). La forma o método que emplee el control para
+ingresar la calificación queda a discreción del Developer.
+- un botón que permita guardar los datos del libro, la review y la calificación,
+para que quede disponible en la sección “mi biblioteca”.
+- la portada debe guardarse como una representación en base64, para poder
+ser recuperada en consultas posteriores.
+
+
+Al momento de guardar los datos, el SPA debe desplegar un mensaje de éxito.
+Una vez que el libro quede guardado debe aparecer en la Sección “mi biblioteca”,
+la cual será detallada a con�nuación
+Sección mi biblioteca.
+En la parte superior derecha de la pantalla en todo momento, se debe desplegar un
+botón de acceso a la sección “mi biblioteca”, la cual es una sección individualizada
+del resto de la SPA.
+Esta sección debe desplegar los libros que han sido guardados con toda la
+información disponible.
+La pantalla debe contener un buscador que permita buscar por �tulo y autor los
+libros que se encuentren grabados en la sección, además de contener un filtro
+donde se puedan ordenar los libros por calificación de forma ascendente o
+descendente y excluir de la lista los libros que no contengan un review.
+Cada resultado que se encuentre en la sección “mi biblioteca” debe contener un
+botón para editar la información del libro (Review y Calificación), como también un
+botón para eliminar
+el libro de la sección "mi biblioteca" de forma permanente, previa confirmación por
+parte del usuario.
+
+Definiciones
+El Front debe estar construido en Nuxt 3 u�lizando Node 18 como base. El store
+debe ser Pinia.
+El CSS debe ser escrito desde 0, u�lizando Sass. Está permi�do u�lizar librerías y
+componentes externos existentes en NPM pero no temas completos de es�lo.
+El diseño y planteamiento UI / UX queda a criterio del Developer.
+
+Backend
+Se deben crear los siguientes endpoints para manejar la SPA antes descrita en una
+API desarrollada en Node 18.
+
+Los servicios debe estar integrada con la API htps://openlibrary.org desde donde
+será extraída la información de los libros al momento de la búsqueda.
+Se debe u�lizar MongoDB como base de datos para las acciones o registros que
+requieran persistencia dentro de la API.
+GET /api/books/search?q=:nombreDelLibro
+Este endpoint debe integrarse con la API htps://openlibrary.org para extraer los
+resultados de búsqueda de libros u�lizando como parámetro el nombre del libro.
+Si en los resultados de búsqueda existe algún libro que ya se encuentra guardado
+en “mi biblioteca”, la portada del libro debe incluirse en la respuesta u�lizando
+el endpoint /api/books/library/front-cover/[id_portada] en lugar de la llamada a la
+API htps://openlibrary.org para desplegar la portada.
+GET /api/books/last-search/
+Este endpoint debe listar las úl�mas 5 búsquedas del usuario.
+POST /api/books/my-library
+Este endpoint debe guardar en MongoDB los datos del libro y la imagen portada
+representada en base64 para poder desplegarse posteriormente en los resultados
+de "mi biblioteca".
+GET /api/books/my-library/:id
+Este endpoint debe desplegar la información del libro guardado en "mi biblioteca",
+
+u�lizando como parámetro un ID auto-generado por la misma API. este ID auto-
+generado debe guardarse en MongoDB.
+
+PUT /api/books/my-library/:id
+Este endpoint debe actualizar la información del libro (review y calificación)
+DELETE /api/books/my-library/:id
+Este endpoint debe eliminar el libro guardado en "mi biblioteca".
+GET /api/books/my-library
+Este endpoint debe listar los libros que se encuentran guardados en la sección "mi
+biblioteca", este endpoint debe contener ademas URL parameters para realizar los
+filtros mencionados mas arriba, (buscar por �tulo o autor, excluir libros sin review).
+
+
+Entrega
+Ambos desarrollos deben cargarse en un repositorio publico a elección del
+Developer.
+Ambos desarrollos pueden ser desplegados en plataformas Free a Elección del
+Developer, para poder ser revisadas por el Equipo Interno.
+Se revisará
+- Correcta aplicación de conceptos de UI UX en el desarrollo del Front
+End
+- Buenas prác�cas en el desarrollo del código de Front End ( HTML, JS y
+CSS ) y Back End
+- Correcto uso de Store y Nuxt 3.
+- Log Relevante hacia la consola en las ejecuciones de los Endpoints de
+la API Node.
+
+Suma Puntos
+Desarrollar la API u�lizando nuestro framework Favorito
+(htps://moleculer.services/docs/0.14/usage ).
+De lo contrario desarrollar la API u�lizando Express.
+Suma Muchísimos puntos
+Agregar al desarrollo Auten�cación Basic para la API y el front, con una pantalla de
+Login y Botón de Logout.
