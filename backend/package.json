@@ -14,6 +14,7 @@
     "moleculer": "^0.14.35",
     "moleculer-db": "^0.8.29",
     "moleculer-db-adapter-mongo": "^0.4.21",
+    "moleculer-repl": "^0.7.4",
     "mongoose": "^8.17.1"
   }
 }

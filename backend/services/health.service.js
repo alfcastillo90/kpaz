@@ -1,8 +1,14 @@
 module.exports = {
   name: "health",
   actions: {
-    check(ctx) {
-      return { status: "ok", timestamp: new Date() };
-    },
+    check: {
+      rest: "/",
+      handler(ctx) {
+        return { status: "ok", timestamp: new Date() };
+      }
+    }
   },
+  settings: {
+    rest: "/api/health"
+  }
 };
