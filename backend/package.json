@@ -11,6 +11,8 @@
   "description": "",
   "dependencies": {
     "axios": "^1.11.0",
+    "bcrypt": "^6.0.0",
+    "jsonwebtoken": "^9.0.2",
     "moleculer": "^0.14.35",
     "moleculer-db": "^0.8.29",
     "moleculer-db-adapter-mongo": "^0.4.21",
@@ -23,6 +25,8 @@
   },
   "jest": {
     "testEnvironment": "node",
-    "testMatch": ["**/test/**/*.test.js"]
+    "testMatch": [
+      "**/test/**/*.test.js"
+    ]
   }
 }
