@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "moleculer-runner --repl services"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +16,7 @@
     "moleculer-db": "^0.8.29",
     "moleculer-db-adapter-mongo": "^0.4.21",
     "moleculer-repl": "^0.7.4",
+    "moleculer-web": "^0.10.8",
     "mongoose": "^8.17.1"
   }
 }
