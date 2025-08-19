@@ -1,6 +1,5 @@
 Requerimiento - Book Reviews
 
-Desarrollar codigo y que todo funcione en un contenedor docker, incluida la base de datos
 
 Front End
 Se requiere construir un SPA que permita desplegar información sobre libros
